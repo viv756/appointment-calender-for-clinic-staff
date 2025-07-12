@@ -1,0 +1,31 @@
+.rbc-event {
+  background-color: #25eb3f !important; /* Tailwind blue-600 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.85rem;
+}
+
+/* Today highlight */
+.rbc-today {
+  background-color: #eff6ff !important; /* Tailwind blue-50 */
+}
+
+/* Header day names */
+.rbc-header {
+  font-weight: 600;
+  background-color: #f9fafb;
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Time slot background */
+.rbc-time-content {
+  background-color: #ffffff;
+}
+
+/* Toolbar (optional) */
+.rbc-toolbar {
+  display: none; /* if using your own toolbar */
+}

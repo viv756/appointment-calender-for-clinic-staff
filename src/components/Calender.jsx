@@ -8,6 +8,8 @@ import Modal from "./Modal";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import CalendarToolbar from "./CalendarToolbar";
 
+import "../styles/calendar.css"
+
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = () => {
@@ -54,14 +56,6 @@ const MyCalendar = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <CalendarToolbar
-        doctors={doctors}
-        patients={patients}
-        selectedDoctor={selectedDoctor}
-        selectedPatient={selectedPatient}
-        onFilterChange={handleFilterChange}
-      />
-
       <Calendar
         localizer={localizer}
         events={filteredAppointments}
@@ -72,7 +66,15 @@ const MyCalendar = () => {
         defaultView="month"
         selectable
         components={{
-          toolbar: () => null,
+          toolbar: () => (
+            <CalendarToolbar
+              doctors={doctors}
+              patients={patients}
+              selectedDoctor={selectedDoctor}
+              selectedPatient={selectedPatient}
+              onFilterChange={handleFilterChange}
+            />
+          ),
         }}
         onSelectSlot={handleSlotSelect}
         onSelectEvent={(event) => {
