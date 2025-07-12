@@ -36,12 +36,6 @@
   display: none; /* if using your own toolbar */
 }
 
-.rbc-off-range {
-  background-color: #f3f4f6 !important; /* Tailwind gray-100 */
-  color: #9ca3af !important; /* Tailwind gray-400 */
-  pointer-events: none; /* makes them non-interactive */
-}
-
 /* Optional: Highlight today */
 .rbc-today {
   background-color: #e0f2fe !important; /* Tailwind blue-100 */
@@ -61,4 +55,15 @@
 
 .dark .rbc-today {
   background-color: #374151 !important;
+}
+
+.rbc-off-range {
+  background-color: #f9fafb !important; /* Tailwind gray-50 */
+  color: transparent !important;
+  pointer-events: none; /* optional: disable clicks */
+}
+
+/* Optional: remove event indicators on those cells */
+.rbc-off-range .rbc-event {
+  display: none;
 }
