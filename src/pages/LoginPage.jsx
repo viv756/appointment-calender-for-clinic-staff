@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MOCK_CREDENTIALS } from "../constants/auth";
@@ -11,7 +11,13 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const { login } = useAuthContext();
+  const { isAuthenticated, login } = useAuthContext();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/calendar");
+    }
+  }, [isAuthenticated,navigate]);
 
   const handleInputChange = (e) => {
     if (errorMessage || loginError) {

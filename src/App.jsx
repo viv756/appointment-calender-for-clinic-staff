@@ -10,7 +10,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route
-          path="/calender"
+          path="/calendar"
           element={
             <ProtectedRoute>
               <CalenderPage />
