@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MOCK_CREDENTIALS } from "../constants/auth";
+import { useAuthContext } from "../context/auth.provider";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({});
@@ -9,6 +10,8 @@ const LoginPage = () => {
   const [loginError, setLoginError] = useState("");
 
   const navigate = useNavigate();
+
+  const { login } = useAuthContext();
 
   const handleInputChange = (e) => {
     if (errorMessage || loginError) {
@@ -35,6 +38,7 @@ const LoginPage = () => {
       formData.email === MOCK_CREDENTIALS.email &&
       formData.password === MOCK_CREDENTIALS.password
     ) {
+      login();
       navigate("/calender");
     } else {
       setLoginError("Invalid credentials");
@@ -43,11 +47,11 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen w-full overflow-hidden p-2">
-      <div class="flex flex-col w-full max-w-md p-12 space-y-6 text-center bg-gray-50 text-gray-900 mx-auto mt-40 rounded-2xl shadow-xl h-110 ">
-        <h1 class="text-3xl font-semibold">Sign in to your account</h1>
-        <form onSubmit={handleSubmit} class="flex flex-col space-y-4">
-          <div class="flex flex-col text-left">
-            <label for="email" class="text-sm font-medium text-gray-700">
+      <div className="flex flex-col w-full max-w-md p-12 space-y-6 text-center bg-gray-50 text-gray-900 mx-auto mt-40 rounded-2xl shadow-xl h-110 ">
+        <h1 className="text-3xl font-semibold">Sign in to your account</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+          <div className="flex flex-col text-left">
+            <label htmlFor="email" className="text-sm font-medium text-gray-700">
               Email address
             </label>
             <input
@@ -55,14 +59,14 @@ const LoginPage = () => {
               name="email"
               type="email"
               placeholder="Enter your email"
-              class="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800"
+              className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800"
               onChange={handleInputChange}
             />
             {errorMessage.email && <p className="text-red-600 text-sm">{errorMessage.email}</p>}
           </div>
 
-          <div class="flex flex-col text-left">
-            <label for="password" class="text-sm font-medium text-gray-700">
+          <div className="flex flex-col text-left">
+            <label htmlFor="password" className="text-sm font-medium text-gray-700">
               Password
             </label>
             <input
@@ -70,7 +74,7 @@ const LoginPage = () => {
               name="password"
               type="password"
               placeholder="Enter your password"
-              class="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800"
+              className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800"
               onChange={handleInputChange}
             />
             {errorMessage.password && (
@@ -80,7 +84,7 @@ const LoginPage = () => {
 
           <button
             type="submit"
-            class="w-full flex justify-center items-center px-4 py-2 font-semibold rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 ">
+            className="w-full flex justify-center items-center px-4 py-2 font-semibold rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 ">
             Sign in
           </button>
         </form>
