@@ -40,6 +40,8 @@ const MyCalendar = () => {
       start,
       end,
     });
+
+    setIsModalOpen(false);
   };
 
   return (
@@ -93,10 +95,12 @@ const MyCalendar = () => {
               required
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  ">
               <option value="">Select a Patient</option>
-              <option value="Dr. John Smith">Dr. John Smith</option>
-              <option value="Dr. Alice Williams">Dr. Alice Williams</option>
-              <option value="Dr. David Lee">Dr. David Lee</option>
-              <option value="Dr. Sophia Patel">Dr. Sophia Patel</option>
+              <option value="John Doe">John Doe</option>
+              <option value="Emily Johnson">Emily Johnson</option>
+              <option value="Michael Brown">Michael Brown</option>
+              <option value="Sarah Davis">Sarah Davis</option>
+              <option value="Daniel Wilson">Daniel Wilson</option>
+              <option value="Olivia Martinez">Olivia Martinez</option>
             </select>
           </div>
 
