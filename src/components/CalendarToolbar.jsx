@@ -7,6 +7,7 @@ const CalendarToolbar = ({
   selectedDoctor,
   selectedPatient,
   onFilterChange,
+  label
 }) => {
   return (
     <div className="flex items-center justify-between p-2 bg-gray-100 rounded-md mb-4">
@@ -37,6 +38,9 @@ const CalendarToolbar = ({
           ))}
         </select>
       </div>
+       <h1 className="text-xl md:text-2xl font-bold text-blue-700">
+        {label}
+      </h1>
     </div>
   );
 };
