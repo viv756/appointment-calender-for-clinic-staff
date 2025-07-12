@@ -1,4 +1,3 @@
-import React from "react";
 import MyCalendar from "../components/Calender";
 import MobileDayView from "../components/MobileViewcalendar";
 
