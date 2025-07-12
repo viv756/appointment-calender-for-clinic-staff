@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
@@ -6,15 +6,34 @@ import { useCalendarContext } from "../context/calendar.provider";
 import CreateAppointmentForm from "./CreateAppointmentForm";
 import Modal from "./Modal";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
+import CalendarToolbar from "./CalendarToolbar";
 
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [selectedPatient, setSelectedPatient] = useState("");
 
   const { appointments } = useCalendarContext();
+
+  const doctors = [...new Set(appointments.map((a) => a.doctorName))];
+  const patients = [...new Set(appointments.map((a) => a.patientName))];
+
+  const filteredAppointments = useMemo(() => {
+    return appointments.filter((appt) => {
+      const doctorMatch = selectedDoctor ? appt.doctorName === selectedDoctor : true;
+      const patientMatch = selectedPatient ? appt.patientName === selectedPatient : true;
+      return doctorMatch && patientMatch;
+    });
+  }, [appointments, selectedDoctor, selectedPatient]);
+
+  // Handler for dropdown changes
+  const handleFilterChange = (type, value) => {
+    if (type === "doctor") setSelectedDoctor(value);
+    if (type === "patient") setSelectedPatient(value);
+  };
 
   const handleSlotSelect = (slotInfo) => {
     setSelectedDate(slotInfo.start);
@@ -23,9 +42,17 @@ const MyCalendar = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
+      <CalendarToolbar
+        doctors={doctors}
+        patients={patients}
+        selectedDoctor={selectedDoctor}
+        selectedPatient={selectedPatient}
+        onFilterChange={handleFilterChange}
+      />
+
       <Calendar
         localizer={localizer}
-        events={appointments}
+        events={filteredAppointments}
         startAccessor="start"
         endAccessor="end"
         style={{ height: "800px" }}
