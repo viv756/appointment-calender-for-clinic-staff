@@ -12,6 +12,12 @@
   background-color: #eff6ff !important; /* Tailwind blue-50 */
 }
 
+/* Dark Mode Styles */
+.dark .rbc-calendar {
+  background-color: #1f2937; /* Tailwind gray-800 */
+  color: white;
+}
+
 /* Header day names */
 .rbc-header {
   font-weight: 600;
@@ -39,4 +45,20 @@
 /* Optional: Highlight today */
 .rbc-today {
   background-color: #e0f2fe !important; /* Tailwind blue-100 */
+}
+
+.dark .rbc-toolbar,
+.dark .rbc-month-view,
+.dark .rbc-header,
+.dark .rbc-event {
+  background-color: #1f2937;
+  color: white;
+}
+
+.dark .rbc-day-bg {
+  border-color: #374151; /* Tailwind gray-700 */
+}
+
+.dark .rbc-today {
+  background-color: #374151 !important;
 }

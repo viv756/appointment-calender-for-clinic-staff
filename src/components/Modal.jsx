@@ -13,8 +13,8 @@ const Modal = ({ isOpen, onClose, title, children, dayAppointments }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center ">
+      <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md dark:bg-[#1f2937]">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h2>
           <button onClick={onClose} className="text-gray-500  text-xl font-bold">
@@ -31,9 +31,9 @@ const Modal = ({ isOpen, onClose, title, children, dayAppointments }) => {
                     key={appt.id}
                     className="border p-2 rounded flex justify-between items-center">
                     <div>
-                      <p className="font-medium">{appt.patientName}</p>
-                      <p className="text-sm text-gray-500">{appt.doctorName}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="font-medium dark:text-white">{appt.patientName}</p>
+                      <p className="text-sm text-gray-500 dark:text-white">{appt.doctorName}</p>
+                      <p className="text-sm text-gray-500 dark:text-white">
                         {new Date(appt.start).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",

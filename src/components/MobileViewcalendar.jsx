@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useCalendarContext } from "../context/calendar.provider";
 import moment from "moment";
+import DarkModeToggle from "./DarkToggle";
 
 const MobileDayView = () => {
   const { appointments } = useCalendarContext();
@@ -28,34 +29,37 @@ const MobileDayView = () => {
   };
 
   return (
-    <div className="md:hidden p-4 bg-gray-50 min-h-screen">
-      <div className="mb-4">
+    <div className="md:hidden p-4 bg-gray-50 min-h-screen dark:bg-[#1f2937]">
+      <div className="flex justify-end">
+        <DarkModeToggle />
+      </div>
+      <div className="mb-4 mt-4">
         <input
           type="date"
           value={moment(selectedDate).format("YYYY-MM-DD")}
           onChange={(e) => setSelectedDate(moment(e.target.value).toDate())}
-          className="border px-3 py-2 rounded w-full"
+          className="border px-3 py-2 rounded w-full dark:text-white" 
         />
       </div>
 
-      <div className="space-y-6 overflow-y-auto max-h-[75vh] pb-8">
+      <div className="space-y-6 overflow-y-auto max-h-[75vh] pb-8 dark:bg-[#1f2937]">
         {days
           .filter((day) => day >= selectedDate)
           .map((day) => {
             const appts = getAppointmentsForDay(day);
             return (
-              <div key={day.toISOString()} className="bg-white rounded shadow p-4">
+              <div key={day.toISOString()} className="bg-white rounded shadow p-4 dark:bg-[#1f2937] dark:border dark:border-white">
                 <h3 className="font-semibold text-blue-700 mb-2">
                   {moment(day).format("dddd, MMMM D")}
                 </h3>
 
                 {appts.length > 0 ? (
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 dark:bg-[#1f2937]">
                     {appts.map((appt) => (
                       <li
                         onClick={handleSlotSelect}
                         key={appt.id}
-                        className="p-3 border-l-4 border-blue-500 bg-blue-50 rounded">
+                        className="p-3 border-l-4 border-blue-500 bg-blue-50 rounded dark:bg-[#1f2937]">
                         <div className="font-medium text-blue-900">{appt.patientName}</div>
                         <div className="text-sm text-gray-700">{appt.doctorName}</div>
                         <div className="text-sm text-gray-500">

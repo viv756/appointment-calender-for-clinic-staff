@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { MOCK_CREDENTIALS } from "../constants/auth";
 import { useAuthContext } from "../context/auth.provider";
+import DarkModeToggle from "../components/DarkToggle";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({});
@@ -17,7 +18,7 @@ const LoginPage = () => {
     if (isAuthenticated) {
       navigate("/calendar");
     }
-  }, [isAuthenticated,navigate]);
+  }, [isAuthenticated, navigate]);
 
   const handleInputChange = (e) => {
     if (errorMessage || loginError) {
@@ -52,12 +53,15 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-hidden p-2">
-      <div className="flex flex-col w-full max-w-md p-12 space-y-6 text-center bg-gray-50 text-gray-900 mx-auto mt-40 rounded-2xl shadow-xl h-110 ">
-        <h1 className="text-3xl font-semibold">Sign in to your account</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+    <div className="min-h-screen w-full overflow-hidden p-2 dark:bg-[#1f2937]">
+      <div className="flex justify-end sm:pr-10">
+        <DarkModeToggle />
+      </div>
+      <div className="flex flex-col w-full max-w-md p-12 space-y-6 text-center bg-gray-50 text-gray-900 mx-auto mt-40 rounded-2xl shadow-xl h-100 dark:bg-[#1f2937] border border-white">
+        <h1 className="text-3xl font-semibold dark:text-white">Sign in to your account</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 dark:bg-[#1f2937]">
           <div className="flex flex-col text-left">
-            <label htmlFor="email" className="text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-white">
               Email address
             </label>
             <input
@@ -65,14 +69,14 @@ const LoginPage = () => {
               name="email"
               type="email"
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800"
+              className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800 dark:bg-[#1f2937] dark:text-white"
               onChange={handleInputChange}
             />
             {errorMessage.email && <p className="text-red-600 text-sm">{errorMessage.email}</p>}
           </div>
 
           <div className="flex flex-col text-left">
-            <label htmlFor="password" className="text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-white">
               Password
             </label>
             <input
@@ -80,7 +84,7 @@ const LoginPage = () => {
               name="password"
               type="password"
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800"
+              className="w-full px-4 py-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-sky-600 focus:border-sky-600 bg-white text-gray-800 dark:bg-[#1f2937] dark:text-white"
               onChange={handleInputChange}
             />
             {errorMessage.password && (

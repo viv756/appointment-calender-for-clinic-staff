@@ -34,7 +34,7 @@ const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
       <div className="flex flex-col text-left">
-        <label htmlFor="doctorName" className="block mb-1 text-sm font-medium text-gray-700 ">
+        <label htmlFor="doctorName" className="block mb-1 text-sm font-medium text-gray-700 dark:text-white">
           Doctor Name
         </label>
         <select
@@ -42,17 +42,17 @@ const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
           name="doctorName"
           id="doctorName"
           required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  ">
-          <option value="">Select a doctor</option>
-          <option value="Dr. John Smith">Dr. John Smith</option>
-          <option value="Dr. Alice Williams">Dr. Alice Williams</option>
-          <option value="Dr. David Lee">Dr. David Lee</option>
-          <option value="Dr. Sophia Patel">Dr. Sophia Patel</option>
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-[#1f2937] dark:text-white ">
+          <option value="" className="dark:text-white">Select a doctor</option>
+          <option value="Dr. John Smith" className="dark:text-white">Dr. John Smith</option>
+          <option value="Dr. Alice Williams" className="dark:text-white">Dr. Alice Williams</option>
+          <option value="Dr. David Lee" className="dark:text-white">Dr. David Lee</option>
+          <option value="Dr. Sophia Patel" className="dark:text-white">Dr. Sophia Patel</option>
         </select>
       </div>
 
       <div className="flex flex-col text-left">
-        <label htmlFor="doctorName" className="block mb-1 text-sm font-medium text-gray-700 ">
+        <label htmlFor="doctorName" className="block mb-1 text-sm font-medium text-gray-700 dark:text-white ">
           Patient Name
         </label>
         <select
@@ -60,7 +60,7 @@ const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
           name="patientName"
           id="patientName"
           required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  ">
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-[#1f2937] dark:text-white ">
           <option value="">Select a Patient</option>
           <option value="John Doe">John Doe</option>
           <option value="Emily Johnson">Emily Johnson</option>
@@ -72,7 +72,7 @@ const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
       </div>
 
       <div className="flex flex-col text-left">
-        <label htmlFor="time" className="mb-1 text-sm font-medium text-gray-700 ">
+        <label htmlFor="time" className="mb-1 text-sm font-medium text-gray-700 dark:text-white">
           Appointment Time
         </label>
         <input
@@ -81,7 +81,7 @@ const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
           name="time"
           id="time"
           required
-          className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  "
+          className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white  "
         />
       </div>
       <button
