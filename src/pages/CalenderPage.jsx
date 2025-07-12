@@ -1,10 +1,14 @@
 import React from "react";
 import MyCalendar from "../components/Calender";
+import MobileDayView from "../components/MobileViewcalendar";
 
 const CalenderPage = () => {
   return (
     <div>
-      <MyCalendar />
+      <div className="hidden md:block">
+        <MyCalendar />
+      </div>
+      <MobileDayView />
     </div>
   );
 };
