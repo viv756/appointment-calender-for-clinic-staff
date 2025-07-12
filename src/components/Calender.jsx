@@ -40,6 +40,18 @@ const MyCalendar = () => {
     setIsModalOpen(true);
   };
 
+  const selectedDayAppointments = useMemo(() => {
+    if (!selectedDate) return [];
+    return appointments.filter((appt) => {
+      const apptDate = new Date(appt.start);
+      return (
+        apptDate.getFullYear() === selectedDate.getFullYear() &&
+        apptDate.getMonth() === selectedDate.getMonth() &&
+        apptDate.getDate() === selectedDate.getDate()
+      );
+    });
+  }, [appointments, selectedDate]);
+
   return (
     <div className="p-4 max-w-7xl mx-auto">
       <CalendarToolbar
@@ -63,10 +75,15 @@ const MyCalendar = () => {
           toolbar: () => null,
         }}
         onSelectSlot={handleSlotSelect}
+        onSelectEvent={(event) => {
+          setSelectedDate(new Date(event.start));
+          setIsModalOpen(true);
+        }}
       />
 
       <Modal
         isOpen={isModalOpen}
+        dayAppointments={selectedDayAppointments}
         onClose={() => setIsModalOpen(false)}
         title={`Add Appointment – ${selectedDate?.toDateString()}`}>
         <CreateAppointmentForm selectedDate={selectedDate} setIsModalOpen={setIsModalOpen} />

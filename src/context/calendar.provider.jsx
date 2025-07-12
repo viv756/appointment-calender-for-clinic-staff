@@ -5,6 +5,7 @@ const CalendarContext = createContext();
 export const CalendarProvider = ({ children }) => {
   const [appointments, setAppointments] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [showForm, setShowform] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("appointments");
@@ -36,11 +37,18 @@ export const CalendarProvider = ({ children }) => {
     setAppointments((prev) => [...prev, newAppointment]);
   };
 
+  const deleteAppointment = (id) => {
+    setAppointments((prev) => prev.filter((appt) => appt.id !== id));
+  };
+
   return (
     <CalendarContext.Provider
       value={{
         appointments,
         addAppointment,
+         deleteAppointment, 
+        showForm,
+        setShowform,
       }}>
       {children}
     </CalendarContext.Provider>

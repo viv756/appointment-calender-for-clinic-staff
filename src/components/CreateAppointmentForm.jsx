@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useCalendarContext } from "../context/calendar.provider";
 
 const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
-  
   const [formData, setFormData] = useState({});
 
-  const { addAppointment } = useCalendarContext();
+  const { addAppointment, setShowform } = useCalendarContext();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
@@ -29,6 +28,7 @@ const CreateAppointmentForm = ({ selectedDate, setIsModalOpen }) => {
     });
 
     setIsModalOpen(false);
+    setShowform(false);
   };
 
   return (
